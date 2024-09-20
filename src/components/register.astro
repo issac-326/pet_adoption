@@ -1,0 +1,42 @@
+---
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("username");
+    const email = data.get("email");
+    const password = data.get("password");
+    // Do something with the data
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+<form method="POST" class="flex flex-col items-center bg-white" >
+  <label class="text-xs text-gray-400 bg-white rounded-[50px] pl-5 pt-2 mt-5 w-[330px] h-[35px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+    Full name:
+    <input type="text" name="username" required />
+  </label>
+  <label class="text-xs text-gray-400 bg-white rounded-[50px] pl-5 pt-2 mt-5 w-[330px] h-[35px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+    Email:
+    <input type="email" name="email" required />
+  </label>
+  <label class="text-xs text-gray-400 bg-white rounded-[50px] pl-5 pt-2 mt-5 w-[330px] h-[35px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+    Password:
+    <input type="password" name="password" required minlength="6" />
+  </label>
+  <label class="text-xs text-gray-400 bg-white rounded-[50px] pl-5 pt-2 mt-5 w-[330px] h-[35px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+    Confirm password:
+    <input type="password" name="password2" required minlength="6" />
+  </label>
+  <label class="text-xs text-gray-400 bg-white rounded-[50px] pl-5 pt-2 mt-5 w-[330px] h-[35px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+    Phone:
+    <input type="password" name="password2" required minlength="6" />
+  </label>
+  <button class="mt-12 w-[270px] h-[40px] bg-[#FFA07A] rounded-[20px] text-sm text-white">Sign in</button>
+  <div class="flex">
+    <p class="text-xs">you already have an account?</p>
+    <a class="text-xs text-[#FFA07A] pl-2">Login here</a>
+  </div>
+</form>
